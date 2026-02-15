@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int i;
+	string STR1[10];
+	string STR[10];
+	cout << "Enter String "<<endl;
+	
+	for (i = 0; i < 5; i++)
+	{
+
+		cin >> STR[i];
+	}
+
+	cout << "You Entered String"<<endl;
+	for (i = 0; i < 5; i++)
+	{
+
+		cout << STR[i]<<endl;
+	}
+
+
+	cout << "coping it in another string"<<endl;
+
+	for (i = 0; i < 5; i++)
+	{
+		STR1[i] = STR[i];
+	}
+
+	cout << "String copied in another string"<<endl;
+
+
+	for (i = 0; i < 5; i++)
+	{
+
+		cout << STR1[i] << endl;
+	}
+	return 0;
+}
