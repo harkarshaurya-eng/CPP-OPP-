@@ -16,6 +16,26 @@ public:
 		}
 	}
 
+	void NumPyramid(int i, int j, int n, int k)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++) //for rows
+		{
+			for (j = 1; j <= n - i; j++) //for spaces
+			{
+				cout << " ";
+
+			}
+			for (k = 1; k <= i; k++) //for *
+			{
+				cout << "  " << k;
+			}
+			cout << endl;
+		}
+	}
+
 	void NumPyLeft(int i, int n, int j)
 	{
 		cout << "Enter Number of lines you would like to print" << endl;
@@ -93,6 +113,45 @@ public:
 
 	}
 
+	void StarPyramid(int i, int j, int n,int k)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++) //for rows
+		{
+			for (j = 1; j <= n-i; j++) //for spaces
+			{
+				cout << " ";
+				
+			}
+			for (k = 1; k <= i; k++) //for *
+			{
+				cout << "  *";
+			}
+			cout<< endl;
+		}
+	}
+	void InvertedStarPy(int i, int j, int n, int k)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++) //for rows
+		{
+			for (j = 1; j <= i-1; j++) //for spaces
+			{
+				cout << " ";
+
+			}
+			for (k = 1; k <= n-i+1; k++) //for *
+			{
+				cout << "  *";
+			}
+			cout << endl;
+		}
+	}
+
 	};
 
 	int main()
@@ -101,10 +160,14 @@ public:
 
 		cout << "Which pattern would you like to print?" << endl;
 		cout << "[1]Number Square" << endl;
-		cout << "[2]Number pyramid(left)" << endl;
-		cout << "[3]Number pyramid Reversed(left)" << endl;
-		cout << "[4]Number pyramid (right)" << endl;
-		cout << "[5]Number pyramid Reversed(right)" << endl;
+		cout << "[2]Number pyramid" << endl;
+		cout << "[3]Number pyramid(left)" << endl;
+		cout << "[4]Number pyramid Reversed(left)" << endl;
+		cout << "[5]Number pyramid (right)" << endl;
+		cout << "[6]Number pyramid Reversed(right)" << endl;
+		cout << "[7]Star pyramid" << endl;
+		cout << "[8]Inverted Star pyramid" << endl;
+
 		cin >> Choice;
 		Pattern p;   //creating object
 		if (Choice == 1)
@@ -113,21 +176,33 @@ public:
 		}
 		else if (Choice == 2)
 		{
-			p.NumPyLeft(i, n, a);
+			p.NumPyramid(i, j,k,n);
 		}
 		else if (Choice == 3)
 		{
-			p.NumPyRevLeft(i, n, j);
+			p.NumPyLeft(i, n, j);
 		}
 		else if (Choice == 4)
 		{
-			p.NumPyRight(i, n, j,k);
+			p.NumPyRevLeft(i, n, j);
 		}
 		else if (Choice == 5)
 		{
-			p.NumPyRevRight(i,j,k,n);
+			p.NumPyRight(i,j,k,n);
 		}
-
+		else if (Choice==6)
+		{
+			p.NumPyRevRight(i, j, k, n);
+		}
+		else if (Choice == 7)
+		{
+			p.StarPyramid(i, j, k, n);
+		}
+		else if (Choice == 8)
+		{
+			p.InvertedStarPy(i,j,k,n);
+		}
 		return 0;
 
 	}
+
