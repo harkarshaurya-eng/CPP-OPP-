@@ -1,0 +1,133 @@
+#include<iostream>
+using namespace std;
+
+
+class Pattern
+{
+public:
+	void NumSquare(int i, int n)
+	{
+		cout << "Enter Number of lines you would like to print:" << endl;
+		cin >> n;
+
+		for (i = 0; i < n; i++)
+		{
+			cout << "1 2 3 4" << endl;
+		}
+	}
+
+	void NumPyLeft(int i, int n, int j)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++)
+		{
+			for (j = 1; j <= i; j++)
+			{
+				cout << j << " ";
+
+			}
+			cout << endl;
+		}
+
+	}
+
+	void NumPyRevLeft(int i, int n, int j)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++) //for rows
+		{
+			for (j = 1; j <= n - i + 1; j++) //decreasing numbers
+			{
+				cout << j << " ";
+
+			}
+			cout << endl;
+		}
+
+
+	}
+
+	void NumPyRight(int n, int k, int i, int j)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+
+		for (i = 1; i <= n; i++)
+		{
+			for (j = 1; j <= n - i; j++) //for spaces
+			{
+				cout << " ";
+				
+			}
+			for (k = 1; k <= i; k++) //for numbers
+			{
+				cout << k;
+			}
+			cout << endl;//new line
+		}
+	}
+
+	void NumPyRevRight(int i, int j, int k, int n)
+	{
+		cout << "Enter Number of lines you would like to print" << endl;
+		cin >> n;
+		
+		for (i = 1; i <= n; i++)// for rows
+		{
+			
+			for (j = 1; j <=i-1;j++) //for spaces increasing
+			{
+				cout << " ";
+			}
+			for (k = 1; k <= n-i+1; k++) //for numbers decreasing
+			{
+				cout << k;
+			}
+			cout << endl;
+			
+		}
+
+	}
+
+	};
+
+	int main()
+	{
+		int i = 0, n = 0, a, j = 0,k, Choice;
+
+		cout << "Which pattern would you like to print?" << endl;
+		cout << "[1]Number Square" << endl;
+		cout << "[2]Number pyramid(left)" << endl;
+		cout << "[3]Number pyramid Reversed(left)" << endl;
+		cout << "[4]Number pyramid (right)" << endl;
+		cout << "[5]Number pyramid Reversed(right)" << endl;
+		cin >> Choice;
+		Pattern p;   //creating object
+		if (Choice == 1)
+		{
+			p.NumSquare(i, n); //caling functions
+		}
+		else if (Choice == 2)
+		{
+			p.NumPyLeft(i, n, a);
+		}
+		else if (Choice == 3)
+		{
+			p.NumPyRevLeft(i, n, j);
+		}
+		else if (Choice == 4)
+		{
+			p.NumPyRight(i, n, j,k);
+		}
+		else if (Choice == 5)
+		{
+			p.NumPyRevRight(i,j,k,n);
+		}
+
+		return 0;
+
+	}
