@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+class Calculator{
+
+	public:
+	void Addition(int a,int b, int Add)
+		{
+			cout<<"Enter Two numbers"<<endl;
+			cin>>a;
+			cin>>b;
+
+			Add=a+b;
+
+			cout<<"Addition = "<<Add;
+		}
+
+
+	void Subtraction(int a,int b, int Sub)
+		{
+			cout<<"Enter Two numbers"<<endl;
+			cin>>a;
+			cin>>b;
+
+			Sub=a-b;
+
+			cout<<"Suntraction = "<<Sub;
+		}
+
+
+	void Multiplication(int a,int b, int multiply)
+		{
+			cout<<"Enter Two numbers"<<endl;
+			cin>>a;
+			cin>>b;
+
+			multiply=a*b;
+
+			cout<<"Multiplication = "<<multiply;
+		}
+
+	void Division(int a,int b, int div)
+		{
+			cout<<"Enter Two numbers"<<endl;
+			cin>>a;
+			cin>>b;
+
+			div=a/b;
+
+			cout<<"Division = "<<div;
+		}
+};
+
+
+
+int main()
+{
+int Choice,multiply,Add,sub,div,a,b;
+cout<<"which operation would you like to perform"<<endl;
+cout<<"[1]Addition"<<endl;
+cout<<"[2]Subtraction"<<endl;
+cout<<"[3]Multiplication"<<endl;
+cout<<"[4]Division"<<endl;
+
+cin>>Choice;
+Calculator c;
+if(Choice==1)
+{
+c.Addition(Add,a,b);
+}
+else if(Choice==2)
+{
+c.Subtraction(sub,a,b);
+}
+else if(Choice==3)
+{
+c.Multiplication(multiply,a,b);
+}
+else if(Choice==4)
+{
+c.Division(div,a,b);
+}
+else
+{
+cout<<"Enter valid Choice";
+}
+
+
+
+return 0;
+}
