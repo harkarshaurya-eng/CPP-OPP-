@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+class BankAccount{
+
+private:
+
+string UserName;
+int AccNo;
+long int AccBalance;
+long int Pin;//six digit
+public:
+ 	void Deposit()
+ 		{
+ 		cout<<"Enter Account Number"
+ 		cout<<"Enter pin"<<endl;
+ 		cin<<Pin;
+		}
+
+
+};
+
+
+
+
+int main(){
+
+
+
+}
