@@ -1,21 +1,181 @@
 #include<iostream>
+#include<random>
+#include<string.h>
 using namespace std;
 
-class BankAccount{
+#define USERS 100
+#define Fields 7  //User no, full name, Account Type, Account no,Adhaar Number 
+   
+class BankAccount {
 
 private:
+    long int AdminPassword=9730089537; // you are not supposed to see this
+    string UserStack[USERS][Fields]; //User data Stack
+    int top;
+    int AdminChoice;
+   
+    int UserNo = 0;
+    long int Pin; //Six digit 
+    
 
-string UserName;
-int AccNo;
-long int AccBalance;
-long int Pin;//six digit
+    void Deposit()
+    {
+        cout << "Enter Account Number";
+        cout << "Enter pin" << endl;
+        cin >> Pin;
+    }
+
+    void AdminControls() 
+    {
+        UserStack[0][4] = "Balance";
+        UserStack[0][5] = "Password";
+
+        cout << "Welcome Sir!!" << endl;
+        cout << "User's Account Data:";
+
+        for (i = 0; i <= UserNo; i++)
+        {
+            cout << UserNo<<".   " << FullName << "  " << AccountType<<"  " << AccountNo;
+        }
+
+        cout << "What would like to do:" << endl << "[1]View Balance" << endl << "[2]Ban Account";
+        cin >> AdminChoice;
+
+        if (AdminChoice == 1)
+        {
+            cout << "Which Users Balance would like to see:";
+
+            //feilds ---    UserNo         Fullname    AccountType      Account Number   balance    Password  PAN No
+           //          UserStack[0][0]      [0][1]        [0][2]            [0][3]        [0][4]     [0][5]    [0][6]
+
+        }
+
+    }
+
+
 public:
- 	void Deposit()
- 		{
- 		cout<<"Enter Account Number"
- 		cout<<"Enter pin"<<endl;
- 		cin<<Pin;
-		}
+    string AccountType, FullName[50], PANno[11];
+    long int AccountNo;
+    
+    int UserChoice;
+    int max = 99999999, min = 10000000;
+    long int Key; //for binary search to find and delete the account number
+    int mid, low, high;// for binary search
+    int i, j;//for data stack 
+   
+
+
+
+
+    void HomePage()
+    {
+        UserStack[0][0] = "UserNo";
+        UserStack[0][1] = "FullName";
+        UserStack[0][2] = "AccountType";
+        UserStack[0][3] = "AccountNo";
+
+        cout << "WELCOME TO SH BANK!!\n";
+        cout << "How May I Help You \n";
+        cout << "[1]Create Account \n[2]Delete Account \n[3]Kiss The Developer";
+        cin >> UserChoice;
+
+        if (UserChoice == 1)
+        {
+            CreateAccount(); //calling CreateAccount
+        }
+        else if (UserChoice == 2)
+        {
+            DeleteAccount();
+        }
+        else if (UserChoice == 3)
+        {
+            cout << "I am Flaattered";
+        }
+
+     }
+    void CreateAccount()
+        {
+        
+            cout << "Enter your full name: ";
+            getline(cin, UserStack[UserNo][0]);
+
+            cout << "Enter account type (savings/fixed/business): ";
+            getline(cin, UserStack[UserNo][1]);
+
+            cout << "Enter PAN Card Number: ";
+            getline(cin, UserStack[UserNo][2]);
+
+            cout << "Enter Initial Balance: ";
+            getline(cin, UserStack[UserNo][3]);
+
+            UserNo++;   // Move to next row
+       
+
+            UserNo++;
+           
+        }
+
+
+         
+        if (UserStack[0][2] == "adminShaurya")
+        {
+            cout << "Enter Admin Password:" << endl;
+            if (AdminPassword == 9730089537)
+            {
+                AdminControls();  //calling admin controls
+               
+            }
+            else
+            {
+                cout << "You are not admin. Go away! ";
+                HomePage();
+            }
+        }
+        
+            
+
+        cout << "Enter a 6 digit pin to secure your account";
+        cin >> Pin;
+        cout << "Congratulations!! Your Details Are Verfied";
+        AccNoGenerator();
+       
+        for (i = 0; i <= UserNo; i++)
+        {
+            UserStack[i][5] = AccountNo;
+
+
+        }
+
+        }
+
+    void push()
+    { }
+
+    void DeleteAccount()
+    {
+        cout << "Enter your Account Number:\n";
+        cin >> Key;
+
+        
+        
+
+    }
+
+    long int AccNoGenerator()
+    {
+        random_device rd;    //Gets random seeds
+        mt19937 gen(rd());  //mersenne Twister engine
+        uniform_int_distribution<> dist(10000000, 99999999);   //range 100000 to 999999 for 8 digit account number
+
+        AccountNo = dist(gen);
+
+        cout << "Your Account number is:";
+        cout << AccountNo;
+        return AccountNo;
+    }
+
+
+
 
 
 };
@@ -23,8 +183,11 @@ public:
 
 
 
-int main(){
+int main() {
+
+    BankAccount S;
+    S.HomePage();
 
 
-
+    return 0;
 }
