@@ -9,12 +9,12 @@ using namespace std;
 class BankAccount {
 
 private:
-    long int AdminPassword=9730089537; // you are not supposed to see this
+    long int AdminPassword; // you are not supposed to see this
     string UserStack[USERS][Fields]; //User data Stack
     int top;
     int AdminChoice;
    
-    int UserNo = 0;
+    int UserNo = 1;
     long int Pin; //Six digit 
     
 
@@ -27,25 +27,23 @@ private:
 
     void AdminControls() 
     {
-        UserStack[0][4] = "Balance";
-        UserStack[0][5] = "Password";
+        UserStack[0][5] = "AccountNo";
+        UserStack[0][6] = "Balance";
+        UserStack[0][7] = "Password";
 
-        cout << "Welcome Sir!!" << endl;
-        cout << "User's Account Data:";
+        cout << "Welcome Sir Shaurya!!" << endl;
+        
 
-        for (i = 0; i <= UserNo; i++)
-        {
-            cout << UserNo<<".   " << FullName << "  " << AccountType<<"  " << AccountNo;
-        }
+      
 
-        cout << "What would like to do:" << endl << "[1]View Balance" << endl << "[2]Ban Account";
+        cout << "What would like to do:" << endl << "[1]  " << endl << "[2]Ban Account";
         cin >> AdminChoice;
 
         if (AdminChoice == 1)
         {
             cout << "Which Users Balance would like to see:";
 
-            //feilds ---    UserNo         Fullname    AccountType      Account Number   balance    Password  PAN No
+            //fields ---    UserNo         Fullname    AccountType      Account Number   balance    Password  PAN No
            //          UserStack[0][0]      [0][1]        [0][2]            [0][3]        [0][4]     [0][5]    [0][6]
 
         }
@@ -54,14 +52,14 @@ private:
 
 
 public:
-    string AccountType, FullName[50], PANno[11];
+    
     long int AccountNo;
     
     int UserChoice;
     int max = 99999999, min = 10000000;
     long int Key; //for binary search to find and delete the account number
-    int mid, low, high;// for binary search
-    int i, j;//for data stack 
+    int LeftArray[100],RightArray;// for binary search
+    int i;//printing database for admin
    
 
 
@@ -72,11 +70,12 @@ public:
         UserStack[0][0] = "UserNo";
         UserStack[0][1] = "FullName";
         UserStack[0][2] = "AccountType";
-        UserStack[0][3] = "AccountNo";
+        UserStack[0][3] = "PANno";
+        UserStack[0][4] = "AdhaarNumber";
 
         cout << "WELCOME TO SH BANK!!\n";
         cout << "How May I Help You \n";
-        cout << "[1]Create Account \n[2]Delete Account \n[3]Kiss The Developer";
+        cout << "[1]Create Account \n[2]Delete Account \n[3]Kiss The Developer \n";
         cin >> UserChoice;
 
         if (UserChoice == 1)
@@ -95,73 +94,63 @@ public:
      }
     void CreateAccount()
         {
-        
-            cout << "Enter your full name: ";
-            getline(cin, UserStack[UserNo][0]);
+        cin.ignore();// clear leftover newline
 
-            cout << "Enter account type (savings/fixed/business): ";
-            getline(cin, UserStack[UserNo][1]);
 
-            cout << "Enter PAN Card Number: ";
-            getline(cin, UserStack[UserNo][2]);
+                cout << "Enter your full name: \n";
+                getline(cin, UserStack[UserNo][1]);
 
-            cout << "Enter Initial Balance: ";
-            getline(cin, UserStack[UserNo][3]);
+                cout << "Enter account  (type 'savings','fixed','business'): \n";
+                getline(cin, UserStack[UserNo][2]);
 
-            UserNo++;   // Move to next row
+                if (UserStack[UserNo][2] == "adminShaurya")
+                {
+                    cout << "Enter Admin Password:\n" << endl;
+                    cin >> AdminPassword;
+                    if (AdminPassword == 9730089537)
+                    {
+
+                        AdminControls();  //calling admin controls
+
+                    }
+                    else
+                    {
+                        cout << "You are not admin. Go away!\n ";
+                        HomePage();
+                    }
+                }
+
+
+                cout << "Enter PAN Card Number: \n";
+                getline(cin, UserStack[UserNo][3]);
+
+                cout << "Enter Adhaar Number: \n";
+                getline(cin, UserStack[UserNo][4]);
+
+
+                cout << "Enter a 6 digit pin to secure your account:\n";
+                cin >> UserStack[UserNo][7];
+                cout << "Congratulations!! Your Details Are Verfied:\n";
+                AccNoGenerator();
        
+              
+                     UserStack[UserNo][5] = AccountNo;
+                     cout << "You are lucky today!! You just got ₹1000 as signing BONUS!!\n";
+                     UserStack[UserNo][6] = "₹1000";
+                
+              UserNo++;   // Move to next row
 
-            UserNo++;
-           
+              HomePage(); //returning to home page
         }
-
-
-         
-        if (UserStack[0][2] == "adminShaurya")
-        {
-            cout << "Enter Admin Password:" << endl;
-            if (AdminPassword == 9730089537)
-            {
-                AdminControls();  //calling admin controls
-               
-            }
-            else
-            {
-                cout << "You are not admin. Go away! ";
-                HomePage();
-            }
-        }
-        
-            
-
-        cout << "Enter a 6 digit pin to secure your account";
-        cin >> Pin;
-        cout << "Congratulations!! Your Details Are Verfied";
-        AccNoGenerator();
-       
-        for (i = 0; i <= UserNo; i++)
-        {
-            UserStack[i][5] = AccountNo;
-
-
-        }
-
-        }
-
-    void push()
-    { }
 
     void DeleteAccount()
     {
         cout << "Enter your Account Number:\n";
         cin >> Key;
 
-        
-        
-
     }
 
-    long int AccNoGenerator()
+    void AccNoGenerator()
     {
         random_device rd;    //Gets random seeds
         mt19937 gen(rd());  //mersenne Twister engine
@@ -169,9 +158,10 @@ public:
 
         AccountNo = dist(gen);
 
-        cout << "Your Account number is:";
-        cout << AccountNo;
-        return AccountNo;
+        cout << "Your Account number is:"<<endl;
+        cout << AccountNo<<endl;
+
+        
     }
 
 
