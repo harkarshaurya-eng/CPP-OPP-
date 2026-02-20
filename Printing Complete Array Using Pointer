@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+class PtrArray
+{
+    public:
+    int i;
+    int*ptr[5];
+    int arr[5]={65,43,77,32,98};
+    void PrintPTR()
+    {
+        
+          for(i=0;i<5;i++)
+          {
+              *ptr[i]=&arr[i];
+          }
+          
+          for(i=0;i<5;i++)
+          {
+              cout<<*ptr[i];
+              
+          }
+    }
+    
+};
+int main()
+{
+    PtrArray P1;
+    P1.PrintPTR();
+    
+    return 0;
+}
