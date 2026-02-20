@@ -75,7 +75,7 @@ public:
 
         cout << "WELCOME TO SH BANK!!\n";
         cout << "How May I Help You \n";
-        cout << "[1]Create Account \n[2]Delete Account \n[3]Kiss The Developer \n";
+        cout << "[1]Create Account \n[2]Delete Account \n[3]Thank The Developer \n";
         cin >> UserChoice;
 
         if (UserChoice == 1)
