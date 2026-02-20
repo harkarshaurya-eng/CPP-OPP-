@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+class Series{
+    public:
+    int f,a,b,n,i,d,Ft,AP,UserChoice;
+    void Fibbonacci()
+    {
+        a=0;
+        b=1;
+       
+        cout<<"How many digits would like to print\n";
+        cin>>n;
+        
+        
+        cout<<"Your fibbonaci series is : "<<endl;
+        cout<<a<<" "<<b<<" ";
+        for(i=0;i<=n;i++)
+        {
+            f=a+b;
+            a=b;
+            b=f;
+            cout<<f<<" ";
+        }
+    }
+    
+    void Ap()
+    {
+        cout<<"Enter The Number of terms you want to print:\n";
+        cin>>n;
+        
+        cout<<"Enter First term:\n";
+        cin>>Ft;
+        cout<<"Enter Difference:\n";
+        cin>>d;
+        for(i=1;i<=n;i++)
+        {
+        AP=Ft + (i - 1)*d;
+        
+        cout<<AP<<"  ";
+        
+        }
+    }
+    
+};
+
+int main()
+{
+    int UserChoice;
+    cout<<"Which series do you want to print:\n";
+    cout<<"[1]Fibonacci\n[2]Arithematic progression:\n";
+    cin>>UserChoice;
+    Series S;
+    if(UserChoice==1)
+    {
+    S.Fibbonacci();
+    }
+    else if(UserChoice==2)
+    {
+        S.Ap();
+    }
+    return 0;
+}
