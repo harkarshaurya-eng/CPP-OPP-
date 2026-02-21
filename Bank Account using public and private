@@ -1,7 +1,7 @@
 #include<iostream>
 #include<random>
 #include<string.h>
-using namespace std;
+using namespace std; 
 
 #define USERS 100
 #define Fields 7  //User no, full name, Account Type, Account no,Adhaar Number 
