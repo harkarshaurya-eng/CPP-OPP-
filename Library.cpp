@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<iomanip>
+#include <map>
 using namespace std;
 
 class Book{
@@ -32,10 +33,6 @@ class Signin_LoginPage{
         cin>>year;
         cout<<"Enter your branch:\n";
         cin>>branch;
-
-        
-
-
     }
 };
 
@@ -78,10 +75,28 @@ class menu{
 
 };
 
-class Database:private Signin_LoginPage{
+struct Users{
+    int N;
+    string username;
+    string year;
+    string branch;
+    bool Book_issued;
+};
+
+vector<Users> U;
+
+
+
+class Database:public Signin_LoginPage{
 public:
 vector<vector<string>> users = {
+     
     {"Serial No.", "Username", "Year", "Branch", "Book Issued"}
+};
+
+map<string , string> users = {
+    {"Serial No: " , ""},
+
 };
 
 
