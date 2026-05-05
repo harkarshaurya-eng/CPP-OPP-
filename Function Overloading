@@ -1,62 +1,58 @@
 #include<iostream>
 using namespace std;
-// function overloading 
-//functions with same name are allowed until the parameters are different 
-
+//overriding means that we can use same name for different functions until the paramerets passes in the method have
+//different datatypes -int , float , double, etc.
+//the compiler will not consider the change in names of the parameters with same data type
 class Expenses{
-    public:
-//for electricity 
+public:
     void calculateBill(float units,float total,float rate){
         total = units * rate;
         cout<<"The electricity Bill is:"<<total<<endl;
     }
-//for water 
-    void calculateBill(int littres,int rate,int bill){
-        bill=littres*rate;
-            cout<<"The water Bill is:"<<bill<<endl;
+
+    void calculateBill(int littres,int price,int bill){
+        bill = littres * price;
+        cout<<"The water Bill is:"<<bill<<endl;
     }
-//for internet
-    void calculateBill(double GB,double rate,double invoice){
-        invoice=GB*rate;
+
+    void calculateBill(double GB,double charge,double invoice){
+        invoice = GB * charge;
         cout<<"The internet Bill is:"<<invoice<<endl;
     }
-
-
 };
+
 int main(){
     int choice;
-    float units,total,rate,littres,bill,GB,invoice;
-    Expenses E;
-cout<<"What do you want to calculate?\n";
-cout<<"[1]Electricity\n";
-cout<<"[2]Water\n";
-cout<<"[3]Internet\n";
-cin>>choice;
+    float units,total,rate;
+    int littres,bill,price;
+    double GB,invoice,charge;
 
-if(choice<0||choice>3)
-    {
+    Expenses E;
+
+    cout<<"What do you want to calculate?\n";
+    cout<<"[1]Electricity\n";
+    cout<<"[2]Water\n";
+    cout<<"[3]Internet\n";
+    cin>>choice;
+
+    if(choice < 1 || choice > 3){
         cout<<"!!Enter valid option\n";
     }
-else if(choice==1)
-    {
-        cout<<"Enter units consumed and rate per unit:\n";
+    else if(choice==1){
+        cout<<"Enter units and rate:\n";
         cin>>units>>rate;
         E.calculateBill(units,total,rate);
     }
-else if(choice==2)
-    {
-        cout<<"Enter littres consumed and rate per littre:\n";
-        cin>>littres>>rate;
-        E.calculateBill(littres,rate,bill);
+    else if(choice==2){
+        cout<<"Enter litres and rate:\n";
+        cin>>littres>>price;  
+        E.calculateBill(littres,price,bill);
     }
-else if(choice==3)
-    {
-        cout<<"Enter GB consumed and rate per GB:\n";
-        cin>>GB>>rate;
-        E.calculateBill(GB,rate,invoice);
+    else if(choice==3){
+        cout<<"Enter GB and rate:\n";
+        cin>>GB>>charge;  
+        E.calculateBill(GB,charge,invoice);
     }
-
-
 
     return 0;
 }
