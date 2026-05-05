@@ -1,17 +1,14 @@
-//Create a base class Vehicle with a Virtual function maxSpeed().Derive classes Car,Bike, and Truck to override maxSpeed()
-//based on real-life values.
-
 #include<iostream>
 using namespace std;
 
 class Vehicle{
     public:
-    float p,P,A,C,v;//p:airdensity, P:engine power,A:frontal area,C:Drag coeff.,v=maximun velocity    
+    
     
     //this function will be overridden
     virtual void maxSpeed(){
         cout<<"Calculate maximum speed";
-        P=(1/2)*p*A*C*(pow(v,3));
+        
 
         cout<<"Now calculate the MaxSpeed";
 
@@ -33,7 +30,10 @@ class Car : public Vehicle{
 
 //features 
 //Frame function came but, maxSpeed did not cum
+void maxSpeed() override {
+cout<<"Maxspeed is 220 km/hr\n";
 
+}
 
 };
 
@@ -41,6 +41,10 @@ class ambulance : public Vehicle{
 
 //features 
 //Frame function came but, maxSpeed did not cum
+void maxSpeed() override {
+cout<<"Maxspeed is 110 km/hr\n";
+
+}
 
 
 };
@@ -48,6 +52,35 @@ class truck : public Vehicle{
 
 //features 
 //Frame function came but, maxSpeed did not cum
+void maxSpeed() override {
+cout<<"Maxspeed is 100 km/hr\n";
+
+}
 
 
 };
+
+
+int main()
+{
+Vehicle *v;
+
+Car c;
+ambulance a;
+truck t;
+
+
+v = &c;//store address of object c in pointer to base class 'v'
+v->maxSpeed();//point to function maxSpeed in Car class
+
+v = &a;// same as above
+v->maxSpeed();
+
+
+v = &t;// same as above
+v->maxSpeed();
+
+
+
+    return 0;
+}
