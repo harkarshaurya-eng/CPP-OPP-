@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+
+//Abstract class 
+//enforce that all derived classes must implement certain functions
+//provide a common interface for all the derived classes
+//enable runtime polymorphism using base class pointers
+
+class SmartDevice{
+public:
+virtual void turnOn() = 0; //pure virtual function
+};
+
+class SmartLight:public SmartDevice{
+
+    void turnOn() override {
+        cout<<"Smart Light is On\n";
+    }
+    
+};
+
+class SmartFan:public SmartDevice{
+
+    void turnOn() override {
+        cout<<"Smart Fan is On\n";
+    }
+    
+};
+
+class SmartTV:public SmartDevice{
+
+    void turnOn() override {
+        cout<<"Smart Tv is On\n";
+    }
+    
+};
+
+int main()
+{
+    //we use base class pointers to enable runtime polymorphism
+    //first make pointer to base class
+    SmartDevice *S;
+
+    // then make objects to derived classes
+
+    SmartLight l;
+    SmartFan f;
+    SmartTV tv;
+    //point to SmartLight object 
+    S = &l;
+    S->turnOn();
+
+    //point to SmartFan object 
+    S = &f;
+    S->turnOn();
+
+    //point to SmartTV object 
+    S = &tv;
+    S->turnOn();
+
+return 0;
+}
