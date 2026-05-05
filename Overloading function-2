@@ -1,0 +1,70 @@
+
+//using the calculateSalary() function
+//the compiler interpretes differently if the name of method is same but the number of parameters are different 
+
+#include<iostream>
+using namespace std;
+
+class Salary{
+public:
+    int sum;
+
+    // Peon salary
+    void calculateSalary(int HI,int BS)
+    {
+        sum = BS + HI;
+    }
+
+    // Junior Developer
+    void calculateSalary(int HI,int HA,int BS)
+    {
+        sum = BS + HI + HA;
+    }
+
+    // Senior Developer
+    void calculateSalary(int HI,int HA,int BS,int SO)
+    {
+        sum = BS + HI + HA + SO;
+    }
+};
+
+int main(){
+    int choice;
+    Salary S;
+
+    cout<<"Which salary would you like to calculate?\n";
+    cout<<"[1] Peon\n";
+    cout<<"[2] Junior Developer\n";
+    cout<<"[3] Senior Developer\n";
+    cin>>choice;
+
+    if(choice < 1 || choice > 3){
+        cout<<"Invalid input!";
+    }
+    else if(choice == 1){
+        int HI, BS;
+        cout<<"Enter BS and HI:\n";
+        cin>>BS>>HI;
+
+        S.calculateSalary(HI, BS);
+        cout<<"The salary is: "<<S.sum;
+    }
+    else if(choice == 2){
+        int HI, HA, BS;
+        cout<<"Enter BS, HA and HI:\n";
+        cin>>BS>>HA>>HI;
+
+        S.calculateSalary(HI, HA, BS);
+        cout<<"The salary is: "<<S.sum;
+    }
+    else if(choice == 3){
+        int HI, HA, BS, SO;
+        cout<<"Enter BS, HA, SO and HI:\n";
+        cin>>BS>>HA>>SO>>HI;
+
+        S.calculateSalary(HI, HA, BS, SO);
+        cout<<"The salary is: "<<S.sum;
+    }
+
+    return 0;
+}
