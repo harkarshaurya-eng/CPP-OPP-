@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+class Payments{
+public:
+float balance;
+
+
+virtual void processPayment() =0;
+};
+
+class creditCard:public Payments{
+
+void processPayment(int spend,int CCno,int debt=0)
+{
+
+balance = balance + spend;
+debt =debt + spend;
+spend=0;
+}
+
+class UPI:public Payments{
+
+void processPayments(float credit,int debit ,int balance)
+{
+int choice;
+cout<<"Do you want to [1]credit into account or [2]debit from your account:\n";
+cin>>choice;
+
+if(choice==1)
+{
+balance=
+}
+}
+
+};
+
+int main()
+{
+
+
+
+return 0;
+}
