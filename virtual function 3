@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+
+class Vehicle {
+public:
+    virtual void toll() = 0;
+};
+
+// Car
+class Car : public Vehicle {
+    float dist, time;
+public:
+    Car(float d, float t) : dist(d), time(t) {}
+
+    void toll() override {
+        cout << "Car Toll: " << dist*10 + time*2 << endl;
+    }
+};
+
+// Truck
+class Truck : public Vehicle {
+    float dist, time, weight;
+public:
+    Truck(float d, float t, float w) : dist(d), time(t), weight(w) {}
+
+    void toll() override {
+        cout << "Truck Toll: " << dist*5 + time*2 + weight*5 << endl;
+    }
+};
+
+// Bike
+class Bike : public Vehicle {
+    float dist;
+public:
+    Bike(float d) : dist(d) {}
+
+    void toll() override {
+        cout << "Bike Toll: " << dist*5 << endl;
+    }
+};
+
+// EV
+class EV : public Vehicle {
+    float dist, time, weight, discount;
+public:
+    EV(float d, float t, float w, float dis)
+        : dist(d), time(t), weight(w), discount(dis) {}
+
+    void toll() override {
+        float total = dist*5 + time*2 + weight*5;
+        float finalToll = total * (1 - discount/100);
+        cout << "EV Toll: " << finalToll << endl;
+    }
+};
+
+int main() {
+    int choice;
+    float dist, time, weight, discount;
+
+    cout<<"1.Car\n2.Truck\n3.Bike\n4.EV\n";
+    cin>>choice;
+
+    Vehicle *V;
+
+    if(choice==1){
+    cout<<"Enter distance and time:\n";
+        cin>>dist>>time;
+        Car C(dist,time);
+        V=&C;
+        V->toll();
+    }
+    else if(choice==2){
+    	cout<<"Enter distance,time and weight:\n";
+        cin>>dist>>time>>weight;
+        Truck T(dist,time,weight);
+        V=&T;
+        V->toll();
+    }
+    else if(choice==3){
+    	cout<<"Enter distance:\n";
+        cin>>dist;
+        Bike B(dist);
+        V=&B;
+        V->toll();
+    }
+    else if(choice==4){
+    	cout<<"Enter distance, time weight and discount:\n";
+        cin>>dist>>time>>weight>>discount;
+        EV E(dist,time,weight,discount);
+        V=&E;
+        V->toll();
+    }
+    else{
+        cout<<"Invalid input";
+    }
+
+    return 0;
+}
